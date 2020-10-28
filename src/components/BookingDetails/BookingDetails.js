@@ -15,7 +15,7 @@ const BookingDetails = () => {
     const onSubmit = (data) => {
         setBookingInfo(data);
     };
-    console.log(bookingInfo)
+    // console.log(bookingInfo)
 
 
     return (

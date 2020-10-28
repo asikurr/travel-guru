@@ -8,7 +8,7 @@ import { userContext } from '../../App'
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase-config'
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import { useHistory, useLocation } from 'react-router-dom';
 firebase.initializeApp(firebaseConfig);
 
@@ -34,7 +34,6 @@ const Login = () => {
         success: false,
 
     })
-    // console.log(user.email, user.password)
 
     // const onSubmit = (data) => {
     //     setUser(data)
@@ -74,6 +73,7 @@ const Login = () => {
         }
     }
 
+    //User SignIn and SignUp
     const handleSubmit = (e) => {
         e.preventDefault();
         if (newUser && user.email && user.password) {
@@ -119,6 +119,7 @@ const Login = () => {
 
     }
 
+    //Update User name
     const updateUserName = (firstName, lastName) => {
 
         var user = firebase.auth().currentUser;
@@ -133,6 +134,7 @@ const Login = () => {
     }
 
 
+    //google signin
     var googleProvider = new firebase.auth.GoogleAuthProvider();
     const handleGoogleSignIn = () => {
         firebase.auth().signInWithPopup(googleProvider)
@@ -150,12 +152,11 @@ const Login = () => {
                 history.replace(from)
             })
             .catch(error => {
-
-                var error = error.message;
-                console.log(error);
+                console.log(error.message);
             });
     }
 
+    //facebook signin
     var facebookProvider = new firebase.auth.FacebookAuthProvider();
     const handleFacebookSignIn = () => {
         firebase.auth().signInWithPopup(facebookProvider)
